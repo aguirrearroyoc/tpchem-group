@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theoretical & Physical Chemistry Research Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1c2b3a;
+    --navy-mid: #243444;
+    --navy-light: #3a5472;
+    --gold: #b8943a;
+    --gold-light: #d4b060;
+    --cream: #f5f2ed;
+    --cream-dark: #e8e3d8;
+    --text: #1e1e1e;
+    --text-muted: #5c5c5c;
+    --white: #ffffff;
+    --card-border: #d4ccbf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(184,148,58,0.4);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+  }
+
+  /* ── LOGO SLOT in NAV ── */
+  .nav-logo-slot {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    /* replace the src below with your actual logo file */
+  }
+
+  .nav-logo-placeholder {
+    height: 36px;
+    width: 36px;
+    border: 1px dashed rgba(184,148,58,0.5);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: rgba(184,148,58,0.6);
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+
+  .nav-brand-text {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: #c8b88a;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0 1.1rem;
+    height: 60px;
+    line-height: 60px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.83rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.15s, border-bottom 0.15s;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-links a:hover {
+    color: rgba(255,255,255,0.9);
+    border-bottom-color: rgba(184,148,58,0.4);
+  }
+
+  .nav-links a.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 4.5rem 2rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(184,148,58,0.25);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    opacity: 0.8;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 4vw, 2.9rem);
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    color: #e8e0d0;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub {
+    font-size: 0.97rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+
+  .hero-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+    opacity: 0.7;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.2rem;
+    opacity: 0.7;
+  }
+
+  .section-subtitle {
+    font-size: 0.73rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+    display: block;
+    opacity: 0.85;
+  }
+
+  /* ── ABOUT TEXT ── */
+  .about-text {
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: #2e2e2e;
+    max-width: 740px;
+  }
+
+  /* ── RESEARCH INTERESTS ── */
+  .research-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .research-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 1.1rem 1.4rem;
+    transition: border-color 0.2s;
+  }
+
+  .research-item:hover { border-color: #b8a88a; }
+
+  .research-img {
+    width: 76px;
+    height: 76px;
+    border-radius: 3px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--cream-dark);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    overflow: hidden;
+  }
+
+  .research-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+
+  .research-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .research-body p { font-size: 0.91rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── AFFILIATIONS ── */
+  .affil-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+
+  .affil-card {
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .affil-card:hover { border-color: #b8a88a; }
+
+  .affil-logo {
+    width: 56px;
+    height: 56px;
+    background: var(--cream-dark);
+    border: 1px solid var(--card-border);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .affil-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+
+  .affil-name {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .affil-dept { font-size: 0.79rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+  /* ── DIVIDER ── */
+  .page-divider {
+    border: none;
+    border-top: 1px solid var(--cream-dark);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── MEMBERS LAYOUT ── */
+  .members-two-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .member-card {
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: border-color 0.2s;
+  }
+
+  .member-card:hover { border-color: #b8a88a; }
+
+  .member-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .member-photo {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--gold);
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    color: var(--navy-light);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .member-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  .member-name {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .member-title {
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .member-edu {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 0.7rem;
+    line-height: 1.55;
+  }
+
+  .member-edu strong {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+  }
+
+  .member-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.94rem;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  .member-contact {
+    font-size: 0.81rem;
+    color: var(--navy-light);
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 0.55rem;
+  }
+
+  .member-contact a { color: var(--gold); text-decoration: none; }
+  .member-contact a:hover { text-decoration: underline; }
+
+  /* ── PI card — slightly wider, alone on its row ── */
+  .pi-row { display: grid; grid-template-columns: minmax(0, 460px); gap: 1.5rem; }
+
+  /* ── COORDINATOR card row — two side by side ── */
+  .coord-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* ── SECTION TABS for Publications ── */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 2rem;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 0.65rem 1.4rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover { color: var(--navy); }
+
+  .tab-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── PUB / PROJ labels ── */
+  .pub-section-label {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--navy);
+    border-left: 2px solid var(--gold);
+    padding-left: 0.8rem;
+    margin-bottom: 1.4rem;
+    margin-top: 2rem;
+    opacity: 0.9;
+  }
+
+  .pub-list { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .pub-card {
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 1.3rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .pub-card:hover { border-color: #b8a88a; }
+
+  .pub-title {
+    font-family: 'Lora', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .pub-authors { font-size: 0.86rem; color: var(--text-muted); margin-bottom: 0.55rem; }
+
+  .pub-abstract {
+    font-family: 'Lora', serif;
+    font-size: 0.94rem;
+    color: #3a3a3a;
+    line-height: 1.65;
+    margin-bottom: 0.7rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .pub-abstract.expanded { -webkit-line-clamp: unset; overflow: visible; }
+
+  .pub-doi { font-size: 0.81rem; }
+  .pub-doi a { color: var(--gold); text-decoration: none; font-weight: 500; }
+  .pub-doi a:hover { text-decoration: underline; }
+
+  .pub-toggle {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: var(--navy-light);
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  /* ── PROJECTS ── */
+  .proj-card {
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 1.3rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .proj-card:hover { border-color: #b8a88a; }
+
+  .proj-title {
+    font-family: 'Lora', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.45rem;
+  }
+
+  .proj-badge {
+    display: inline-block;
+    background: rgba(184,148,58,0.12);
+    color: #7a5a10;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 0.65rem;
+    border: 1px solid rgba(184,148,58,0.25);
+  }
+
+  .proj-members {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin-bottom: 0.55rem;
+  }
+
+  .proj-members span {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    margin-right: 0.4rem;
+    font-weight: 500;
+  }
+
+  .proj-resume {
+    font-family: 'Lora', serif;
+    font-size: 0.94rem;
+    color: #3a3a3a;
+    line-height: 1.65;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 1.1rem;
+  }
+
+  .gallery-card {
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .gallery-card:hover { border-color: #b8a88a; transform: translateY(-2px); }
+
+  .gallery-img-wrap {
+    height: 195px;
+    background: var(--cream-dark);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--card-border);
+  }
+
+  .gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  .gallery-caption { padding: 0.85rem 1rem; }
+
+  .gallery-caption-title {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+
+  .gallery-caption-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.83rem;
+    border-top: 1px solid rgba(184,148,58,0.3);
+    margin-top: 4rem;
+  }
+
+  footer a { color: var(--gold-light); text-decoration: none; opacity: 0.8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .nav-brand-text { display: none; }
+    .nav-links a { padding: 0 0.65rem; font-size: 0.72rem; }
+    .research-item { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <!-- LOGO SLOT — replace the placeholder div with <img class="nav-logo-img" src="img/logo.png" alt="TPC Group"> once you have your logo file -->
+    <a class="nav-logo-slot" href="#" onclick="showPage('home'); return false;">
+      <div class="nav-logo-placeholder">LOGO<br>HERE</div>
+      <span class="nav-brand-text">TPC Research Group</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home'); return false;" id="nav-home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('members'); return false;" id="nav-members">Members</a></li>
+      <li><a href="#" onclick="showPage('publications'); return false;" id="nav-publications">Publications</a></li>
+      <li><a href="#" onclick="showPage('projects'); return false;" id="nav-projects">Active Projects</a></li>
+      <li><a href="#" onclick="showPage('gallery'); return false;" id="nav-gallery">Gallery</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ════════════ HOME ════════════ -->
+<div id="page-home" class="page active">
+
+  <div class="hero">
+    <p class="hero-eyebrow">Universidad del Valle · Cali, Colombia</p>
+    <h1>Theoretical &amp; Physical<br>Chemistry Research Group</h1>
+    <p class="hero-sub">Bridging quantum mechanics, statistical thermodynamics, and molecular simulation to understand matter at its most fundamental level.</p>
+    <div class="hero-rule"></div>
+  </div>
+
+  <!-- About Us -->
+  <div class="section">
+    <span class="section-subtitle">About Us</span>
+    <h2 class="section-title">Why Theoretical &amp; Physical Chemistry?</h2>
+    <div class="section-rule"></div>
+    <p class="about-text">
+      At the heart of every material, every drug, every chemical transformation lies a quantum-mechanical reality we can barely see — but can rigorously describe. Theoretical and physical chemistry is the discipline that builds the language to do so.
+      <br><br>
+      From the way electrons dance between atoms to the collective behavior of millions of molecules in a condensed phase, our group seeks to understand the rules that govern chemistry from first principles. We use the power of quantum mechanics, statistical mechanics, and computational simulation not merely as tools, but as windows into a molecular world invisible to the eye.
+      <br><br>
+      What makes this work exciting is its universality: the same framework that explains why water expands when it freezes can illuminate how a protein misfolds, or how a catalyst lowers a reaction's energy barrier. Theory and simulation allow us to ask "why?" — and to design molecules with purpose before they are ever synthesized.
+    </p>
+  </div>
+
+  <hr class="page-divider">
+
+  <!-- Main Research Interests -->
+  <div class="section">
+    <span class="section-subtitle">Research Focus</span>
+    <h2 class="section-title">Main Research Interests</h2>
+    <div class="section-rule"></div>
+
+    <ul class="research-list">
+
+      <li class="research-item">
+        <!-- To use a real image: <img class="research-img" src="img/quantum.jpg" alt="Quantum Chemistry"> -->
+        <div class="research-img">⚛️</div>
+        <div class="research-body">
+          <h3>Quantum Chemistry &amp; Electronic Structure</h3>
+          <p>Development and application of ab initio and density functional methods to study chemical bonding, reaction mechanisms, and excited-state phenomena in molecular systems.</p>
+        </div>
+      </li>
+
+      <li class="research-item">
+        <div class="research-img">🌊</div>
+        <div class="research-body">
+          <h3>Statistical Mechanics &amp; Thermodynamics</h3>
+          <p>Connecting microscopic molecular interactions to macroscopic thermodynamic properties through statistical mechanical formalisms, partition functions, and free-energy methods.</p>
+        </div>
+      </li>
+
+      <li class="research-item">
+        <div class="research-img">💻</div>
+        <div class="research-body">
+          <h3>Molecular Dynamics &amp; Monte Carlo Simulation</h3>
+          <p>Classical and enhanced-sampling simulation techniques to study protein folding, ion solvation, phase transitions, and complex fluid behavior at the atomistic level.</p>
+        </div>
+      </li>
+
+      <li class="research-item">
+        <div class="research-img">🔬</div>
+        <div class="research-body">
+          <h3>Spectroscopy &amp; Optical Properties</h3>
+          <p>Theoretical modeling of electronic, vibrational, and rotational spectra; coupling simulation with experimental spectroscopic data to characterize molecular structure and dynamics.</p>
+        </div>
+      </li>
+
+      <li class="research-item">
+        <div class="research-img">🧬</div>
+        <div class="research-body">
+          <h3>Drug–Target Interactions &amp; Biomolecular Systems</h3>
+          <p>Applying physical chemistry frameworks — docking, free-energy perturbation, and QM/MM — to explore how small molecules interact with biological macromolecules.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <hr class="page-divider">
+
+  <!-- Affiliations -->
+  <div class="section">
+    <span class="section-subtitle">Institutional</span>
+    <h2 class="section-title">Affiliations</h2>
+    <div class="section-rule"></div>
+
+    <div class="affil-list">
+
+      <div class="affil-card">
+        <!-- To use real logo: replace the div below with <img class="affil-logo" src="img/univalle-logo.png" alt="Universidad del Valle"> -->
+        <div class="affil-logo">🏛️</div>
+        <div>
+          <div class="affil-name">Universidad del Valle</div>
+          <div class="affil-dept">Escuela de Ciencias Químicas</div>
+        </div>
+      </div>
+
+      <div class="affil-card">
+        <div class="affil-logo">🔭</div>
+        <div>
+          <div class="affil-name">COLCIENCIAS / MinCiencias</div>
+          <div class="affil-dept">National Research Funding Agency</div>
+        </div>
+      </div>
+
+      <div class="affil-card">
+        <div class="affil-logo">🌐</div>
+        <div>
+          <div class="affil-name">ACS – Physical Chemistry</div>
+          <div class="affil-dept">American Chemical Society</div>
+        </div>
+      </div>
+
+      <div class="affil-card">
+        <div class="affil-logo">📡</div>
+        <div>
+          <div class="affil-name">CECAM</div>
+          <div class="affil-dept">Centre Européen de Calcul Atomique et Moléculaire</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ════════════ MEMBERS ════════════ -->
+<div id="page-members" class="page">
+
+  <div class="hero">
+    <p class="hero-eyebrow">Our Team</p>
+    <h1>Group Members</h1>
+    <p class="hero-sub">Researchers, graduate students, and collaborators driving discovery in theoretical and physical chemistry.</p>
+    <div class="hero-rule"></div>
+  </div>
+
+  <div class="section">
+
+    <!-- GROUP LEADERS row: PI + Coordinator side by side -->
+    <span class="section-subtitle">Leadership</span>
+    <h2 class="section-title">Group Leaders</h2>
+    <div class="section-rule"></div>
+
+    <div class="coord-row">
+
+      <!-- PI -->
+      <div class="member-card">
+        <div class="member-header">
+          <!-- Replace: <div class="member-photo"><img src="img/pi.jpg" alt="PI Name"></div> -->
+          <div class="member-photo">👨‍🔬</div>
+          <div>
+            <div class="member-name">Prof. [PI Name Here]</div>
+            <div class="member-title">Principal Investigator</div>
+          </div>
+        </div>
+        <div class="member-edu">
+          <strong>Education</strong>
+          PhD in Physical Chemistry, [University], [Year]<br>
+          MSc in Chemistry, [University], [Year]
+        </div>
+        <div class="member-desc">
+          Brief biography: research interests, career milestones, and the vision behind the group. Replace with real content.
+        </div>
+        <div class="member-contact">
+          📧 <a href="mailto:pi@univalle.edu.co">pi@univalle.edu.co</a> &nbsp;|&nbsp;
+          <a href="#">ORCID</a> &nbsp;|&nbsp; <a href="#">Google Scholar</a>
+        </div>
+      </div>
+
+      <!-- Coordinator of Simulations and Molecular Structure Modelling -->
+      <div class="member-card">
+        <div class="member-header">
+          <div class="member-photo">👩‍💻</div>
+          <div>
+            <div class="member-name">[Coordinator Name]</div>
+            <div class="member-title">Coordinator of Simulations &amp; Molecular Structure Modelling</div>
+          </div>
+        </div>
+        <div class="member-edu">
+          <strong>Education</strong>
+          PhD in Computational Chemistry, [University], [Year]<br>
+          MSc in Physical Chemistry, [University], [Year]
+        </div>
+        <div class="member-desc">
+          Biography and description of research responsibilities, computational tools managed, and scientific contributions. Replace with real content.
+        </div>
+        <div class="member-contact">
+          📧 <a href="#">coordinator@univalle.edu.co</a> &nbsp;|&nbsp;
+          <a href="#">ORCID</a> &nbsp;|&nbsp; <a href="#">Google Scholar</a>
+        </div>
+      </div>
+
+    </div>
+
+    <br><br>
+    <span class="section-subtitle">Graduate Students</span>
+    <h2 class="section-title">PhD &amp; MSc Researchers</h2>
+    <div class="section-rule"></div>
+
+    <div class="members-two-col">
+
+      <div class="member-card">
+        <div class="member-header">
+          <div class="member-photo">👩‍🔬</div>
+          <div>
+            <div class="member-name">[Student Name]</div>
+            <div class="member-title">PhD Student</div>
+          </div>
+        </div>
+        <div class="member-edu">
+          <strong>Education</strong>
+          BSc in Chemistry, [University], [Year]
+        </div>
+        <div class="member-desc">Research focus and short bio. Replace with real information.</div>
+        <div class="member-contact">📧 <a href="#">student@univalle.edu.co</a></div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-header">
+          <div class="member-photo">👨‍💻</div>
+          <div>
+            <div class="member-name">[Student Name]</div>
+            <div class="member-title">MSc Candidate</div>
+          </div>
+        </div>
+        <div class="member-edu">
+          <strong>Education</strong>
+          BSc in Chemical Engineering, [University], [Year]
+        </div>
+        <div class="member-desc">Research focus and short bio. Replace with real information.</div>
+        <div class="member-contact">📧 <a href="#">student@univalle.edu.co</a></div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-header">
+          <div class="member-photo">🧑‍🔬</div>
+          <div>
+            <div class="member-name">[Student Name]</div>
+            <div class="member-title">Undergraduate Researcher</div>
+          </div>
+        </div>
+        <div class="member-edu">
+          <strong>Education</strong>
+          BSc in Chemistry (in progress), Universidad del Valle
+        </div>
+        <div class="member-desc">Research focus and short bio. Replace with real information.</div>
+        <div class="member-contact">📧 <a href="#">student@univalle.edu.co</a></div>
+      </div>
+
+    </div>
+
+    <br><br>
+    <span class="section-subtitle">Past Members</span>
+    <h2 class="section-title">Alumni</h2>
+    <div class="section-rule"></div>
+
+    <div class="members-two-col">
+      <div class="member-card">
+        <div class="member-header">
+          <div class="member-photo">🎓</div>
+          <div>
+            <div class="member-name">[Alumni Name]</div>
+            <div class="member-title">PhD Alumnus · Class of [Year]</div>
+          </div>
+        </div>
+        <div class="member-desc">Current position and a brief note about their contribution to the group.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /page-members -->
+
+
+<!-- ════════════ PUBLICATIONS ════════════ -->
+<div id="page-publications" class="page">
+
+  <div class="hero">
+    <p class="hero-eyebrow">Scientific Output</p>
+    <h1>Publications</h1>
+    <p class="hero-sub">Peer-reviewed contributions in theoretical chemistry and molecular simulation.</p>
+    <div class="hero-rule"></div>
+  </div>
+
+  <div class="section">
+
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('pub', 'theoretical', this)">Theoretical Section</button>
+      <button class="tab-btn" onclick="switchTab('pub', 'simulation', this)">Simulation &amp; Molecular Structure Modelling</button>
+    </div>
+
+    <!-- THEORETICAL TAB -->
+    <div id="pub-tab-theoretical" class="tab-panel active">
+      <div class="pub-list">
+
+        <div class="pub-card">
+          <div class="pub-title">[Paper Title: e.g. Exact solutions of the Schrödinger equation for model potentials]</div>
+          <div class="pub-authors">Author A, Author B, Author C · <em>Journal of Chemical Physics</em>, 2024</div>
+          <div class="pub-abstract" id="abs-t1">Replace with the real abstract of your publication. Describe aims, methods, key results, and conclusions. Should be concise and written for a broad scientific audience interested in theoretical chemistry.</div>
+          <button class="pub-toggle" onclick="toggleAbstract('abs-t1', this)">Show more ↓</button>
+          <div class="pub-doi">DOI: <a href="#" target="_blank">10.XXXX/xxxxxxxxx</a></div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-title">[Paper Title: e.g. Variational approach to non-covalent interactions in polycyclic aromatics]</div>
+          <div class="pub-authors">Author A, Author D · <em>Physical Chemistry Chemical Physics</em>, 2023</div>
+          <div class="pub-abstract" id="abs-t2">Replace with the real abstract. Describe the methodology, key results, and their physical or chemical significance.</div>
+          <button class="pub-toggle" onclick="toggleAbstract('abs-t2', this)">Show more ↓</button>
+          <div class="pub-doi">DOI: <a href="#" target="_blank">10.XXXX/xxxxxxxxx</a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIMULATION TAB -->
+    <div id="pub-tab-simulation" class="tab-panel">
+      <div class="pub-list">
+
+        <div class="pub-card">
+          <div class="pub-title">[Paper Title: e.g. Free-energy landscape of peptide aggregation by enhanced sampling MD]</div>
+          <div class="pub-authors">Author B, Author C, Author E · <em>Journal of Chemical Theory and Computation</em>, 2024</div>
+          <div class="pub-abstract" id="abs-s1">Replace with the real abstract. Describe the system studied, computational protocol, principal observables, and main physical conclusions.</div>
+          <button class="pub-toggle" onclick="toggleAbstract('abs-s1', this)">Show more ↓</button>
+          <div class="pub-doi">DOI: <a href="#" target="_blank">10.XXXX/xxxxxxxxx</a></div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-title">[Paper Title: e.g. Thermodynamic properties of ionic liquids from Monte Carlo simulation]</div>
+          <div class="pub-authors">Author A, Author F · <em>Molecular Physics</em>, 2023</div>
+          <div class="pub-abstract" id="abs-s2">Replace with the real abstract. Describe what property was computed, how the method was validated, and what the results reveal about molecular-level mechanisms.</div>
+          <button class="pub-toggle" onclick="toggleAbstract('abs-s2', this)">Show more ↓</button>
+          <div class="pub-doi">DOI: <a href="#" target="_blank">10.XXXX/xxxxxxxxx</a></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /page-publications -->
+
+
+<!-- ════════════ ACTIVE PROJECTS ════════════ -->
+<div id="page-projects" class="page">
+
+  <div class="hero">
+    <p class="hero-eyebrow">Ongoing Research</p>
+    <h1>Active Projects</h1>
+    <p class="hero-sub">Current funded and collaborative projects in theoretical chemistry and molecular simulation.</p>
+    <div class="hero-rule"></div>
+  </div>
+
+  <div class="section">
+
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('proj', 'theoretical', this)">Theoretical Section</button>
+      <button class="tab-btn" onclick="switchTab('proj', 'simulation', this)">Simulation &amp; Molecular Structure Modelling</button>
+    </div>
+
+    <!-- THEORETICAL TAB -->
+    <div id="proj-tab-theoretical" class="tab-panel active">
+      <div class="pub-list">
+
+        <div class="proj-card">
+          <div class="proj-title">[Project Title: e.g. Quantum treatment of proton-coupled electron transfer in enzymatic systems]</div>
+          <div class="proj-badge">Active · 2023 – 2026</div>
+          <div class="proj-members"><span>Active Members:</span> PI Name, Student A, Student B</div>
+          <div class="proj-resume">Clear, non-technical summary: what question it addresses, why it matters, the theoretical framework being used, and expected outcomes. Replace with real content.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">[Project Title: e.g. Density matrix renormalization group methods for strongly correlated systems]</div>
+          <div class="proj-badge">Active · 2024 – 2027</div>
+          <div class="proj-members"><span>Active Members:</span> PI Name, Student C</div>
+          <div class="proj-resume">Describe the central hypothesis, theoretical methods to be developed, any collaborating institutions, and expected scientific or technological impact. Replace with real content.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIMULATION TAB -->
+    <div id="proj-tab-simulation" class="tab-panel">
+      <div class="pub-list">
+
+        <div class="proj-card">
+          <div class="proj-title">[Project Title: e.g. Multiscale simulation of solvation dynamics in non-aqueous media]</div>
+          <div class="proj-badge">Active · 2022 – 2025</div>
+          <div class="proj-members"><span>Active Members:</span> PI Name, Student A, Student D, Student E</div>
+          <div class="proj-resume">Summary of the simulation project: the chemical problem being modeled, the computational workflow (QM/MM, classical MD, enhanced sampling), HPC resources, and anticipated outputs. Replace with real content.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">[Project Title: e.g. Machine-learned potentials for reactive force fields in organic chemistry]</div>
+          <div class="proj-badge">Active · 2024 – 2026</div>
+          <div class="proj-members"><span>Active Members:</span> PI Name, Student B, Student C</div>
+          <div class="proj-resume">Describe training data, model architecture, and validation against quantum chemical benchmarks. Replace with real content.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /page-projects -->
+
+
+<!-- ════════════ GALLERY ════════════ -->
+<div id="page-gallery" class="page">
+
+  <div class="hero">
+    <p class="hero-eyebrow">Group Life</p>
+    <h1>Gallery</h1>
+    <p class="hero-sub">Conferences, computational work, outreach, and the moments that make our group a community.</p>
+    <div class="hero-rule"></div>
+  </div>
+
+  <div class="section">
+    <div class="gallery-grid">
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <!-- <img src="img/gallery/photo1.jpg" alt="Description"> -->
+          🖼️
+        </div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Event or Photo Title]</div>
+          <div class="gallery-caption-desc">Brief description of the event, year, and people involved.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">🖼️</div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Conference / Symposium]</div>
+          <div class="gallery-caption-desc">Group members presenting at [conference name], [city], [year].</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">🖼️</div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Lab Life]</div>
+          <div class="gallery-caption-desc">Everyday moments in the computational chemistry group.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">🖼️</div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Outreach Activity]</div>
+          <div class="gallery-caption-desc">Science communication and public engagement activity.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">🖼️</div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Group Celebration]</div>
+          <div class="gallery-caption-desc">Celebrating a thesis defense or group milestone.</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">🖼️</div>
+        <div class="gallery-caption">
+          <div class="gallery-caption-title">[Event Title]</div>
+          <div class="gallery-caption-desc">Description of this photo or event.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-gallery -->
+
+
+<footer>
+  <p>Theoretical &amp; Physical Chemistry Research Group &nbsp;·&nbsp; Universidad del Valle &nbsp;·&nbsp; Cali, Colombia</p>
+  <p style="margin-top:0.4rem;"><a href="mailto:contact@univalle.edu.co">contact@univalle.edu.co</a></p>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleAbstract(id, btn) {
+    const el = document.getElementById(id);
+    el.classList.toggle('expanded');
+    btn.textContent = el.classList.contains('expanded') ? 'Show less ↑' : 'Show more ↓';
+  }
+
+  function switchTab(page, section, btn) {
+    // deactivate all tabs and panels in this page
+    const prefix = page + '-tab-';
+    document.querySelectorAll('[id^="' + prefix + '"]').forEach(p => p.classList.remove('active'));
+    btn.closest('.section').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // activate chosen
+    document.getElementById(prefix + section).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
